@@ -7,7 +7,7 @@ $types = array();
 $groups = og_get_all_group_bundle();
 foreach ($groups as $entity_type => $group) {
   if ($entity_type == 'node') {
-    $types = drupal_map_assoc(array_keys($group)); 
+    $types = backdrop_map_assoc(array_keys($group)); 
   }
 }
 

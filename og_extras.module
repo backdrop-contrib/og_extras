@@ -11,7 +11,7 @@
 function og_extras_views_api() {
   return array(
     'api' => 3,
-    'path' => drupal_get_path('module', 'og_extras') . '/includes',
+    'path' => backdrop_get_path('module', 'og_extras') . '/includes',
   );
 }
 
@@ -19,7 +19,7 @@ function og_extras_views_api() {
  * Implement hook_theme().
  */
 function og_extras_theme() {
-  $module_path = drupal_get_path('module', 'og_extras');
+  $module_path = backdrop_get_path('module', 'og_extras');
 
   $base = array(
     'file' => 'theme.inc',
@@ -40,8 +40,6 @@ function og_extras_theme() {
 
 /**
  * Create a formatted 'Subscribe' link for this group.
- * @TODO
- * Replace with helper function if http://drupal.org/node/1568858 gets in.
  */
 function og_extras_subscribe($entity_type, $entity) {
   $display['type'] = 'og_group_subscribe';
@@ -50,7 +48,7 @@ function og_extras_subscribe($entity_type, $entity) {
   list(,, $group_bundle) = entity_extract_ids($group_type, $group);
   $display['settings']['field_name'] = og_get_best_group_audience_field($entity_type, $entity, $group_type, $group_bundle);
   $elements = og_ui_field_formatter_view($entity_type, $entity, NULL, NULL, NULL, array(), $display);
-  return drupal_render($elements);
+  return backdrop_render($elements);
 }
 
 /**
@@ -179,13 +177,11 @@ function og_extras_context_handler_url() {
 function og_extras_block_info() {
   $blocks['group_info'] = array(
     'info' => t('Group details'),
-    'cache' => DRUPAL_NO_CACHE
-    // DRUPAL_CACHE_PER_ROLE will be assumed if not set.
+    'cache' => BACKDROP_NO_CACHE
   );
   $blocks['node_links'] = array(
     'info' => t('Node content links'),
-    'cache' => DRUPAL_NO_CACHE
-    // DRUPAL_CACHE_PER_ROLE will be assumed if not set.
+    'cache' => BACKDROP_NO_CACHE
   );
   return $blocks;
 }
@@ -237,5 +233,5 @@ function og_extras_node_links() {
 
   $content = og_node_create_links($group['group_type'], $group['gid'], OG_AUDIENCE_FIELD, NULL, $types);
 
-  return drupal_render($content);
+  return backdrop_render($content);
 }

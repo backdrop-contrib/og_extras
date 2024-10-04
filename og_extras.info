@@ -4,13 +4,6 @@ dependencies[] = og (2.x)
 dependencies[] = og_ui
 dependencies[] = og_context
 dependencies[] = views
-core = 7.x
+backdrop = 1.x
+type - module
 package = "Organic groups"
-
-
-; Information added by Drupal.org packaging script on 2015-03-31
-version = "7.x-1.2"
-core = "7.x"
-project = "og_extras"
-datestamp = "1427835485"
-
